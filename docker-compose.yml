@@ -1,0 +1,24 @@
+services:
+  container1:
+    image: bhandavyabv/container1:latest
+    container_name: container1
+    ports:
+      - 6000:6000
+    volumes:
+      - ./:/tmp
+    networks:
+      - microservices-docker
+    depends_on:
+      - container2
+
+  container2:
+    image: bhandavyabv/container2:latest
+    container_name: container2
+    volumes:
+      - ./:/tmp
+    networks:
+      - microservices-docker
+
+networks:
+  microservices-docker:
+    name: docker_network
